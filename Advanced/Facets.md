@@ -15,5 +15,5 @@ The application need to index your resources for activacting the search engine, 
 
 Describing a ressource via the facet app could be time consuming. In fact when we ask to describe ?s, the service will list every ongoing and outgoing properties returning all the triples shaped as <?s> <?p> <?o> and as <?o> <?p> <?s>.
 
-A tips for speed up it is to disabling change the describe behavior as follow with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) )
-`INSERT INTO DB.DBA.SYS_SPARQL_HOST VALUES ('*',null,null,null,'DEFINE sql:describe-mode \"CBD\"')`
+A tips for speed up it is to disabling change the describe behavior as follow with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) ) :
+* `INSERT INTO DB.DBA.SYS_SPARQL_HOST VALUES ('*',null,null,null,'DEFINE sql:describe-mode \"CBD\"')`
