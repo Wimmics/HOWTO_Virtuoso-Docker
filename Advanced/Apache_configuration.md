@@ -1,4 +1,4 @@
-### Web server configuration
+# Web server configuration
 Below is an example of a simple Apache configuration `.conf` file. In this configuration, the access to the admin interface Conductor from the outside is blocked and only most of the useful services are accessible.
 ```
 <VirtualHost *:80>
@@ -29,7 +29,7 @@ Below is an example of a simple Apache configuration `.conf` file. In this confi
 </VirtualHost>
 ```
 
-#### How to access to the conductor web interface ?
+## How to access to the conductor web interface ?
 Create an SSH tunnel using the following command:
 `ssh -L 8890:localhost:8890 <Server domain>`
 The Conductor interface will be reachable at [http://localhost:8890/conductor](http://localhost:8890/conductor).
