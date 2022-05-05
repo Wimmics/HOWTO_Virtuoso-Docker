@@ -2,18 +2,18 @@
 
 ## 1. Install the package 
 You can consult the official documentation here : http://vos.openlinksw.com/owiki/wiki/VOS/VirtuosoFacetsWebService
-The Faceted Browsing service give you access to a search engine interface, and can also be used for descriebing your ressource.
+The Faceted Browsing service gives you access to a search engine interface. It can also be used for describing your resource.
 
 That is a Virtuoso package that is by default given within the app into a .dav file format. For installing it you need to run the following command into the isql interface :
 `vad_install('/opt/virtuoso-opensource/vad/fct_dav.vad', 0);`
 
-The application need to index your resources for activacting the search engine, the best option is to indexing your data when you finished to load them. A good practice is to do it after each data load by running the following commands :
+The application needs to index your resources for activating the search engine. The best option is to index your data when you finish loading them. A good practice is to do it after each data load by running the following commands :
 * `urilbl_ac_init_db();`
 * `s_rank();`
 
-## 2. Descriebe behavior
+## 2. Describe behavior
 
-Describing a resource via the facet app could be time-consuming. When we ask to descriebe ?s, the service will list every ongoing and outgoing property returning all the triples shaped as *<?s> <?p> <?o>* and as *<?o> <?p> <?s>*.
+Describing a resource via the facet app could be time-consuming. When we ask to describe ?s, the service will list every ongoing and outgoing property returning all the triples shaped as *<?s> <?p> <?o>* and as *<?o> <?p> <?s>*.
 
-A tips for speed up it is to disabling change the describe behavior as follow with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) ) :
+A tips for speeding up it is to disabling change the describe behavior as follows with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) ) :
 * `INSERT INTO DB.DBA.SYS_SPARQL_HOST VALUES ('*',null,null,null,'DEFINE sql:describe-mode \"CBD\"')`
