@@ -11,9 +11,9 @@ The application need to index your resources for activacting the search engine, 
 * `urilbl_ac_init_db();`
 * `s_rank();`
 
-## 2. Describe behavior
+## 2. Descriebe behavior
 
-Describing a ressource via the facet app could be time consuming. In fact when we ask to describe ?s, the service will list every ongoing and outgoing properties returning all the triples shaped as *<?s> <?p> <?o>* and as *<?o> <?p> <?s>*.
+Describing a resource via the facet app could be time-consuming. When we ask to descriebe ?s, the service will list every ongoing and outgoing property returning all the triples shaped as *<?s> <?p> <?o>* and as *<?o> <?p> <?s>*.
 
 A tips for speed up it is to disabling change the describe behavior as follow with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) ) :
 * `INSERT INTO DB.DBA.SYS_SPARQL_HOST VALUES ('*',null,null,null,'DEFINE sql:describe-mode \"CBD\"')`
