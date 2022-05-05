@@ -5,5 +5,6 @@
 - [ ] SSL certificate
 - [ ] namespace sur ns.inria.fr and redirection towards describe endpoint of a virtuoso server
 - [ ] How to load you data
+- [ ] How to run commands on your virtuoso docker
 - [ ] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can
 - [ ] Performance management
