@@ -6,3 +6,4 @@
 - [x] Ask Frank to create a Git repo
 - [ ] How to load you data
 - [ ] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can
+- [ ] Performance management
