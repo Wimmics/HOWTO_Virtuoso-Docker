@@ -5,3 +5,4 @@
 - [ ] namespace sur ns.inria.fr and redirection towards describe endpoint of a virtuoso server
 - [x] Ask Frank to create a Git repo
 - [ ] How to load you data
+- [ ] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can
