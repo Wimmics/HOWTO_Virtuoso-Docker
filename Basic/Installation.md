@@ -1,11 +1,23 @@
-### Virtuoso on docker installation
+# Virtuoso on docker installation
 
 Depending on your use case different possibilities are offered to you :
 * You just need to host a server > go to section 1.1.
 * You had to respect the reproducibility rules of a complete data process that only need load your data > go to section 1.2.
 * You are in the case where you need to extend the virtuoso application with another one > go to section 1.3.
 
-#### Simple Docker image installation
+#### Virtuoso env variables
+
+all the information of the virtuoso.ini could be updated :
+
+https://people.cs.aau.dk/~matteo/notes/virtuoso-setup-on-docker.html
+From the the docker image documentation, the naming convention are the followings :
+`VIRT_$SECTION_$KEY=VALUE` Where :
+*    VIRT is common prefix to group such  variables together (always in upper case)
+*  SECTION is the name of the [section] in virtuoso.ini (case insensitive)
+*   KEY is the name of a key within the section (case insensitive)
+    VALUE is the text to be written into the key (case sensitive)
+
+## 1. Simple Docker image installation
 
 The Openlink virtuoso image offers a mounting point `/database/` where the folder containing the database files and the `.ini` file can be mounted to make the data and configuration persistent.
 
@@ -33,7 +45,7 @@ docker run --name virtuoso \
      openlink/virtuoso-opensource-7:7.2
 ```
 
-#### Docker compose (simple case)
+## 2. Docker compose (simple case)
 
 The simple docker compose case is when you just need to respect a reproductibility data process. In that case you will "just" have to build an app composed by :
 * the official virtuoso image
@@ -101,7 +113,7 @@ ENTRYPOINT /bin/bash import.sh
 We using here a very light Unix image that we extends by installing docker and archive utilities. We importing inside the image a script (the one used for processing the data), and we run it.
 
 
-#### Docker compose for extending the virtuoso image
+## 3. Docker compose for extending the virtuoso image
 
 In some case you could be in the situation where you must have to extends the virtuoso image. The best way for it would be to create a docker-compose file (you may simply create a Docker file but creating a docker-compose one prevent to build and run the app) :
 ```
@@ -134,15 +146,3 @@ RUN cd /opt && git clone https://github.com/datalogism/dbpedia-vad && cd dbpedia
 
 ```
 Firstly we upload the virtuoso image that we simply extends by installing an application coming from a github repo
-
-#### Virtuoso env variables
-
-all the information of the virtuoso.ini could be updated :
-
-https://people.cs.aau.dk/~matteo/notes/virtuoso-setup-on-docker.html
-From the the docker image documentation, the naming convention are the followings :
-`VIRT_$SECTION_$KEY=VALUE` Where :
-*    VIRT is common prefix to group such  variables together (always in upper case)
-*  SECTION is the name of the [section] in virtuoso.ini (case insensitive)
-*   KEY is the name of a key within the section (case insensitive)
-    VALUE is the text to be written into the key (case sensitive)
