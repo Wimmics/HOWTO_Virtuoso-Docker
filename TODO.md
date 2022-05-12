@@ -8,3 +8,4 @@
 - [ ] How to run commands on your virtuoso docker
 - [ ] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can
 - [ ] Performance management
+- [ ] How to create a dump
