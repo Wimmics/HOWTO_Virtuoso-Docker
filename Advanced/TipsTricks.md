@@ -13,7 +13,7 @@ SELECT * {
 ?s ?p ?o
 }
 ```
-will return results containing duplicate triples. Graphs are supposed to be sets of triples, as such querying the graph resulting of the union of two graphs should have duplicated values. Because Virtuoso considered triples as quads in their inner workings, it duplicates results without apparent differences.
+will return results containing duplicate triples. Graphs are supposed to be sets of triples, as such querying the graph resulting of the union of two graphs should not have duplicated values. Because Virtuoso considered triples as quads in their inner workings, it considers identical triples as different quads and duplicate then in the results.
 When possible, the `DISTINCT` keyword should be used to remove duplicate values.
 
 ## The "ResultSetMaxRows" parameter applies to inner queries

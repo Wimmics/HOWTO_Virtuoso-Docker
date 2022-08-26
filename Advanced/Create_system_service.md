@@ -21,8 +21,13 @@ WantedBy=multi-user.target
 ```
 
 Enable it :
+
 `sudo systemctl enable NAME.service`
+
 after it :
+
 `sudo system start NAME.service`
+
 `sudo system stop NAME.service`
+
 `sudo system status NAME.service`
