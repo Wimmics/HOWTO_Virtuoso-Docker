@@ -6,13 +6,13 @@
 
 ### Run commands (TBD)
 
-### [Loading data](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Basic/Loading_data.md#loading-data-on-the-server)
+### [Loading RDF data into Virtuoso](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Basic/Loading_data.md#loading-data-on-the-server)
 
 ## Advanced
 
-### [Installing the facets plugin](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Facets.md#installing-the-faceted-browsing-service)
+### [Installing the Faceted Browser](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Facets.md#installing-the-faceted-browsing-service)
 
-### [Create system service](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Create_system_service.md#virtuoso-as-a-system-service-on-linux)
+### [Run Virtuoso as system daemon](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Create_system_service.md#virtuoso-as-a-system-service-on-linux)
 
 ### [Apache web server configuration](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Apache_configuration.md#web-server-configuration)
 
