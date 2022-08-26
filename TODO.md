@@ -1,11 +1,20 @@
 - [x] fct app
 - [x] creating a tunnel for accessing to conductor
-- [x] Metadata description 101
+- [x] Metadata Description 101
 - [x] Ask Frank to create a Git repo
-- [ ] SSL certificate
-- [ ] namespace sur ns.inria.fr and redirection towards describe endpoint of a virtuoso server
-- [ ] How to load you data
-- [ ] How to run commands on your virtuoso docker
-- [ ] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can
-- [ ] Performance management
-- [ ] How to create a dump
+- [ ] SSL certificate (Celian)
+- [x] namespace in ns.inria.fr and redirection towards describe endpoint of a virtuoso server (Pierre)
+- [ ] How to load your data (Nadia, Anna, Pierre)
+- [ ] How to run commands on your virtuoso docker (Nadia, Anna, Pierre)
+- [x] Tips: Queries without distinct returns duplicate because it uses hidden quads. generally use DISTINCT when you can (Pierre and anyone who has something)
+- [ ] Performance management (Celian learned some things)
+- [ ] How to create a dump (?)
+- [ ] Add example of proper metadata description or template (Pierre)
+- [ ] How to change the admin password (Anna)
+- [ ] Redirection of the .well-known (Pierre)
+
+### Notes
+- Remove ISSA and DBpedia-specific things. In particular, in the docker compose installation part.
+- Also in this part, everything after "Concerning the Dockerfile, please find here a template for building your own app" should probably be in the advanced section.
+- In loading data: we need more explanation about `import/import-data.isql` in the command `docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql`
+- In loading data: The part after "Updating virtuoso data outside virtuoso" starts with the assumption that we install virtuoso into our computer on top of the docker image we already host. This should be redone by replacing all the commands as docker commands.
