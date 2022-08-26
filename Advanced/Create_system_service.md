@@ -10,7 +10,7 @@ Description=Launch a Virtuoso server
 After=apache2
 
 [Service]
-ExecStart=docker run --name docker-virtuoso --interactive --tty --env DBA_PASSWORD=dekalog --publish 1111:1111 --publish 8890:8890 --volume `pwd`:/database openlink/virtuoso-opensource-7:latest
+ExecStart=docker run --name docker-virtuoso --interactive --tty --env DBA_PASSWORD=<PASSWORD> --publish 1111:1111 --publish 8890:8890 --volume `pwd`:/database openlink/virtuoso-opensource-7:latest
 ExecStop=docker stop docker-virtuoso
 ExecStopPost=docker rm docker-virtuoso
 Restart=always
