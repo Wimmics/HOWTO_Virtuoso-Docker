@@ -10,13 +10,13 @@
 
 ## Advanced
 
+### [Installing the facets plugin](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Facets.md#installing-the-faceted-browsing-service)
+
+#### [Dereferencement](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Dereferencement.md)
+
 ### [Apache](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Apache_configuration.md#web-server-configuration)
 
 ### SSL (TBD)
-
-### [Facets](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Facets.md#installing-the-faceted-browsing-service)
-
-#### [Dereferencement](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Dereferencement.md)
 
 ### [Create system service](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Create_system_service.md#virtuoso-as-a-system-service-on-linux)
 
