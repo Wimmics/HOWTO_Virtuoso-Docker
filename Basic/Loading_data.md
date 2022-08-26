@@ -11,7 +11,7 @@ The isql-v command can be used from inside the virtuoso image using
 The command to import data is as follow:
 `docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql"`
 
-#### Updating virtuoso data outside virtuoso
+#### Uploading virtuoso data outside virtuoso
 
 Another option to consider can be scripting complex actions via bash files. For it, you need to install first the package *virtuoso-opensource*.
 
