@@ -6,8 +6,10 @@ Go the [http://localhost:8890/conductor] URL
 
 #### Updating virtuoso data via the Docker image
 The isql-v command can be used from inside the virtuoso image using
-```docker exec -it virtuoso isql --tty ```
-```docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql"```
+`docker exec -it virtuoso isql --tty `.
+
+The command to import data is as follow:
+`docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql"`
 
 #### Updating virtuoso data outside virtuoso
 
