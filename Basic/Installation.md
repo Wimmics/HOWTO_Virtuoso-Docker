@@ -19,18 +19,37 @@ From the the docker image documentation, the naming convention are the following
 
 ## 1. Simple Docker image installation
 
+To load Openlink virtuoso image:
+```
+docker pull openlink/virtuoso-opensource-7:latest
+```
+for a specific version:
+```
+docker pull openlink/virtuoso-opensource-7:7.2
+```
+Before running the container for the first time it is necessary to create a dba password and store it in the $VIRTUOSO-DBA-PWD env variable. (We choose to set the variable in the user's .bashrc file. If you do the same remember to restart the user's session.)
+
 The Openlink virtuoso image offers a mounting point `/database/` where the folder containing the database files and the `.ini` file can be mounted to make the data and configuration persistent.
 
 As an example, an example with the database stored in the current folder:
 ```
 docker run  \
     --name docker-virtuoso \
-    --detach  \
-    --env DBA_PASSWORD=<YOUR_PASSWORD> \
+    --detach \
+    --env DBA_PASSWORD=$VIRTUOSO-DBA-PWD \
     --publish 1111:1111 \
     --publish 8890:8890 \
     --volume `pwd`:/database \
     openlink/virtuoso-opensource-7:latest
+```
+For sharing data and scripts between the host and the container create an `/import` directory under the directory mapped to `/database` directory on the container. Add this directory to the allowed directories list in *virtuoso.ini file*.
+
+```
+DirsAllowed = ., ../vad, /usr/share/proj, /database/import
+```
+To restart vistuoso container:
+```
+docker restart  docker-virtuoso
 ```
 
 ## 2. Docker compose (simple case)
