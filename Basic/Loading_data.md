@@ -37,10 +37,10 @@ run_virtuoso_cmd () {
 ```
 * By declaring first the following parameters :
 ```
-$host=localhost  
-$port=1111 (default value)
-$user=dba
-$STORE_DBA_PASSWORD= *** (this is your own secret)
+host=localhost  
+port=1111 (default value)
+user=dba
+STORE_DBA_PASSWORD= *** (this is your own secret)
 ```
 
 Exemple of use :
