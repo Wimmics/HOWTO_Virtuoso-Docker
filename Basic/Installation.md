@@ -23,26 +23,14 @@ The Openlink virtuoso image offers a mounting point `/database/` where the folde
 
 As an example, an example with the database stored in the current folder:
 ```
-docker run --rm \
+docker run  \
     --name docker-virtuoso \
-    --interactive --tty \
+    --detach  \
     --env DBA_PASSWORD=<YOUR_PASSWORD> \
     --publish 1111:1111 \
     --publish 8890:8890 \
     --volume `pwd`:/database \
     openlink/virtuoso-opensource-7:latest
-```
-Anna's version of the same thing
-```
-docker run --name virtuoso \
-     --rm -d \
-    -p 8890:8890 -p 1111:1111 \
-    -e DBA_PASSWORD=pass \
-    -e DEFAULT_GRAPH=http://data-issa.cirad.fr/graph \
-    -v ~/ISSA/volumes/virtuoso/database:/database \
-    -v ~/ISSA/data/dataset-0-0/en/rdf:/source \
-    -v ~/ISSA/pipeline/virtuoso:/import \
-     openlink/virtuoso-opensource-7:7.2
 ```
 
 ## 2. Docker compose (simple case)
