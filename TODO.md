@@ -10,7 +10,7 @@
 - [ ] Performance management (Celian learned some things)
 - [ ] How to create a dump (?)
 - [ ] Add example of proper metadata description or template (Pierre)
-- [ ] How to change the admin password (Anna)
+- [ ] In installation, add how to change the default admin Virtuoso pwd (Anna)
 - [ ] Redirection of the .well-known (Pierre)
 
 ### Notes
@@ -19,7 +19,5 @@
 - In loading data: we need more explanation about `import/import-data.isql` in the command `docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql`
 - In loading data: The part after "Updating virtuoso data outside virtuoso" starts with the assumption that we install virtuoso into our computer on top of the docker image we already host. This should be redone by replacing all the commands as docker commands.
 - Move "Installing the facets plugin" part to Basics parts
-- In installation, add how to change the default admin Virtuoso pwd
 - Move "Create system service" part to Basics partsn after installation.
 - Move Dereferencing as a second part in Apache web server config.
-- 
