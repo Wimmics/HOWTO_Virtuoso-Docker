@@ -102,13 +102,75 @@ The WIMMICS team hosts a [website](https://wimmics.github.io/voidmatic/) to easi
 The description can be accessible in at least one of the three following manners :
 * In the dataset itself
 The description can be stored with the data in the server, possibly in its own graph. This is the advantage of facilitating the updates of the metadata.
-* Reachable at `/sparql-sd`
-According to the SPARQL-SD recommendation, any SPARQL server must make a SPARQL-SD description available at the `/sparql` if it is called without `query` argument. However, Virtuoso places its SPARQL query editor interface at this address. The Virtuoso server stores an automatically generated description in a graph named with the server's URL. Replacing or augmenting the content of this graph makes it reachable at `/sparql-sd`. As the generation of the content of this graph is not well documented, it is preferable to gather all description metadata in one file and to redirect the `/sparql-sd` URL in the apache configuration with the following line, as shown in the Apache server configuration section:
+* Reachable at `/sparql` if no parameters are passed
+According to the SPARQL-SD recommendation, any SPARQL server must make a SPARQL-SD description available at the `/sparql`. To respect that, we use the dereferencing feature of Virtuoso to redirect the `/sparql` URL toward the description of the resource describing the service present in the dataset, when their are no parameters and the expected content is an RDF file. This is done by adding the following rules to the Apache configuration, after replacing `ENDPOINT-URI` by the right URI:
 ```
-Redirect permanent /sparql-sd <URL/description.ttl>
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "text/turtle" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=text/turtle" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "text/plain" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=text/plain" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/json" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=application/json" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/rdf\+json" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=application/rdf\%2bjson" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/ld\+json" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=application/ld\%2bjson" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/rdf\+xml" [nocase]
+     RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=application/rdf\%2bxml" [R=303,L]
 ```
 * Reachable at `/.well-known/void`
-According to the VoID recommendation, the metadata description of a SPARQL server should preferably be accessible as a file at the `/.well-known/void` URL. To make it possible, we recommend the use of the Apache configuration with the following line, as shown in the Apache server configuration section:
+According to the VoID recommendation, the metadata description of a SPARQL server should preferably be accessible as a file at the `/.well-known/void` URL. To make it possible, we add the following rules to the Apache configuration, after replacing `DATASET-URI` by the right URI:
 ```
-Redirect permanent /.well-known/void <URL/description.ttl>
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "text/html" [nocase]
+     RewriteRule "^/.well-known/void?$" "/describe/?url=DATASET-URI" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "text/turtle" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=text/turtle" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "text/plain" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=text/plain" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/json" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=application/json" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/rdf\+json" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=application/rdf\%2bjson" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/ld\+json" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=application/ld\%2bjson" [R=303,L]
+
+     RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
+     RewriteCond "%{QUERY_STRING}" "^$"
+     RewriteCond "%{HTTP_ACCEPT}" "application/rdf\+xml" [nocase]
+     RewriteRule "^/.well-known/void?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<DATASET-URI>&output=application/rdf\%2bxml" [R=303,L]
 ```
+Note that in these rules, the `text/html` requests are redirected to the facets.
