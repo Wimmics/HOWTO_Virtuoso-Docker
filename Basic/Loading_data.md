@@ -1,17 +1,63 @@
-### Loading data on the server
+# Loading data on the server
 
-#### Loading data via the Conductor web interface
+## Loading data via the Conductor web interface
 
 Go the [http://localhost:8890/conductor] URL
 
-#### Updating virtuoso data via the Docker image
-The isql-v command can be used from inside the virtuoso image using
-`docker exec -it virtuoso isql --tty `.
+## Loading data via the Docker exec command
+The [docker exec](https://docs.docker.com/engine/reference/commandline/exec/) command in combination with [Interactice SQL Utility (ISQL)](https://docs.openlinksw.com/virtuoso/invokingisql/)  can be used to connect to the running Virtuoso instance and perform data load and update. 
 
-The command to import data is as follow:
-`docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql"`
+The RDF data files have to be placed in the `import` folder that was created during the [installation](Installation.md). The easiest way to upload this file is to create an *isql* script file in the same `import` folder. 
 
-#### Uploading virtuoso data outside virtuoso
+For example, to load *test.ttl* file to the *ht<span>tp://</span>data.namespace.fr/graph/test* graph, the minimal *import-rdf.isql* script should look like this: 
+
+```
+log_enable(3,1);
+
+SPARQL CLEAR GRAPH  <http://data.namespace.fr/graph/test>;
+
+DELETE FROM DB.DBA.load_list;
+ld_dir ('', 'test.ttl', 'http://data.namespace.fr/graph/test');
+rdf_loader_run ();
+
+checkpoint;
+```
+And the command running it should be like this:
+```
+docker exec virtuoso \
+       isql -H localhost -U dba -P $VIRTUOSO-DBA-PWD exec="LOAD import/import-rdf.isql" 
+
+```
+Note that the second parameter of *ld_dir* command can be a file mask to load multiple files into the same graph (see command documentation [here](https://docs.openlinksw.com/virtuoso/fn_ld_dir/) .
+
+For an incremental update to a graph remove `SPARQL CLEAR GRAPH...` line.  
+
+
+There also exists a mechanism to pass arguments to an *isql* script.
+
+For example to make a previous example more generic where the rdf file and a graph can be passed as arguments the *import-rdf.isql* script would look like this: 
+```
+log_enable(3,1);
+
+SPARQL CLEAR GRAPH  <$ARGV[$+ $I 1]>;
+
+DELETE FROM DB.DBA.load_list;
+ld_dir ('', '$ARGV[$I]', '$ARGV[$+ $I 1]');
+rdf_loader_run ();
+checkpoint;
+```
+And the command running it would look like this:
+```
+docker exec virtuoso \
+       isql -H localhost -U dba -P $VIRTUOSO-DBA-PWD exec="LOAD import/import-rdf.isql" \
+            -i test.ttl http://data.namespace.fr/graph/test
+
+```
+
+___________________________________________________________
+
+
+## Uploading virtuoso data outside virtuoso
 
 Another option to consider can be scripting complex actions via bash files. For it, you need to install first the package *virtuoso-opensource*.
 
