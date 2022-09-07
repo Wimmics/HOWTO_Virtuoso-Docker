@@ -2,16 +2,16 @@
 - [x] creating a tunnel for accessing to conductor
 - [x] Metadata Description 101
 - [x] Ask Frank to create a Git repo
-- [ ] SSL certificate (Celian)
 - [x] namespace in ns.inria.fr and redirection towards describe endpoint of a virtuoso server (Pierre)
 - [x] How to load your data (Nadia, Anna, Pierre)
 - [x] How to run commands on your virtuoso docker (Nadia, Anna, Pierre)
 - [x] Tips: (Anyone who has something)
-- [ ] Performance management (Celian learned some things)
-- [ ] How to create a dump (?)
 - [x] Add example of proper metadata description or template (Pierre)
-- [ ] In installation, add how to change the default admin Virtuoso pwd (Anna)
 - [x] Redirection of the .well-known (Pierre)
+- [ ] SSL certificate (Celian)
+- [ ] Performance management (Celian learned some things)
+- [ ] How to create a dump (Celian)
+- [ ] In installation, add how to change the default admin Virtuoso pwd (Anna)
 
 ### More specific tasks
 - [ ] Remove ISSA and DBpedia-specific things. In particular, in the docker compose installation part.
@@ -20,4 +20,4 @@
 - [x] In loading data: The part after "Updating virtuoso data outside virtuoso" starts with the assumption that we install virtuoso into our computer on top of the docker image we already host. This should be redone by replacing all the commands as docker commands.
 - [x] Move "Installing the facets plugin" part to Basics parts
 - [x] Move "Create system service" part to Basics partsn after installation.
-- [ ] Move Dereferencing as a second part in Apache web server config.
+- [x] Move Dereferencing as a second part in Apache web server config.

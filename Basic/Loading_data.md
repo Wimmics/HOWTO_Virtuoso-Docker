@@ -2,7 +2,12 @@
 
 ## Loading data via the Conductor web interface
 
-Go the [http://localhost:8890/conductor](http://localhost:8890/conductor) URL
+If your docker is hosted on a server, you may need to create a SSH tunnel `ssh -L 8890:localhost:8890`.
+
+Go the [http://localhost:8890/conductor](http://localhost:8890/conductor) URL.
+In the web interface, you need to connect as admin and to go the the "Linked Data" tab. In this tab, you will find a form to upload files to graph.
+
+To be noted that in the "Database" tab, you will find an "Interactive SQL" sub-tab to send ISQL commands to the server.
 
 ## Loading data via the Docker exec command
 The [docker exec](https://docs.docker.com/engine/reference/commandline/exec/) command in combination with [Interactice SQL Utility (ISQL)](https://docs.openlinksw.com/virtuoso/invokingisql/)  can be used to connect to the running Virtuoso instance and perform data load and update.

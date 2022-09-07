@@ -21,7 +21,7 @@ sudo docker exec -it virtuoso \
 Run isql instructions in a `command.isql` file present in the shared folder `/database`:
 ```
 docker exec -it virtuoso \
-    isql localhost:1111 dba dekalog /database/command.isql
+    isql localhost:1111 dba dekalog database/command.isql
 ```
 or
 ```
