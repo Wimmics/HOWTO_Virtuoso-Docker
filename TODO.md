@@ -4,7 +4,7 @@
 - [x] Ask Frank to create a Git repo
 - [ ] SSL certificate (Celian)
 - [x] namespace in ns.inria.fr and redirection towards describe endpoint of a virtuoso server (Pierre)
-- [ ] How to load your data (Nadia, Anna, Pierre)
+- [x] How to load your data (Nadia, Anna, Pierre)
 - [ ] How to run commands on your virtuoso docker (Nadia, Anna, Pierre)
 - [x] Tips: (Anyone who has something)
 - [ ] Performance management (Celian learned some things)
@@ -18,6 +18,6 @@
 - [ ] Also in this part, everything after "Concerning the Dockerfile, please find here a template for building your own app" should probably be in the advanced section.
 - [x] In loading data: we need more explanation about `import/import-data.isql` in the command `docker exec -it virtuoso isql-v -H localhost -U dba -P pass exec="LOAD import/import-data.isql`
 - [x] In loading data: The part after "Updating virtuoso data outside virtuoso" starts with the assumption that we install virtuoso into our computer on top of the docker image we already host. This should be redone by replacing all the commands as docker commands.
-- [ ] Move "Installing the facets plugin" part to Basics parts
-- [ ] Move "Create system service" part to Basics partsn after installation.
+- [x] Move "Installing the facets plugin" part to Basics parts
+- [x] Move "Create system service" part to Basics partsn after installation.
 - [ ] Move Dereferencing as a second part in Apache web server config.
