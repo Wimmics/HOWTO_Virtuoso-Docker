@@ -21,7 +21,7 @@ Below is an example of a simple Apache configuration `.conf` file. In this confi
     ProxyPass /services/ http://localhost:8890/services/
     ProxyPassReverse /services/ http://localhost:8890/services/
 
-    #--- Forbid access to Conductor, only allowed through direct access to Virtuoso port 8890 or 4443 which is not open on internet
+    #--- Forbid access to Conductor, only allowed through direct access to Virtuoso port 8890 or 4443 which is not open on the internet
     <Location /conductor>
       Order deny,allow
       Deny from all
@@ -29,7 +29,7 @@ Below is an example of a simple Apache configuration `.conf` file. In this confi
 </VirtualHost>
 ```
 
-## How to access to the conductor web interface ?
+## How to access the conductor web interface?
 Create an SSH tunnel using the following command:
 `ssh -L 8890:localhost:8890 <Server domain>`
 The Conductor interface will be reachable at [http://localhost:8890/conductor](http://localhost:8890/conductor).
