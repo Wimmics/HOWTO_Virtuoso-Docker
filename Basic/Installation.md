@@ -2,7 +2,7 @@
 
 Depending on your use case different possibilities are offered to you :
 * You just need to host a server > go to section 1.1.
-* You had to respect the reproducibility rules of a complete data process that only need load your data > go to section 1.2.
+* You had to respect the reproducibility rules of a complete data process that only need to load your data > go to section 1.2.
 * You are in the case where you need to extend the virtuoso application with another one > go to section 1.3.
 
 #### Virtuoso env variables
@@ -10,9 +10,9 @@ Depending on your use case different possibilities are offered to you :
 all the information of the virtuoso.ini could be updated :
 
 https://people.cs.aau.dk/~matteo/notes/virtuoso-setup-on-docker.html
-From the the docker image documentation, the naming convention are the followings :
+From the docker image documentation, the naming convention are the followings :
 `VIRT_$SECTION_$KEY=VALUE` Where :
-*    VIRT is common prefix to group such  variables together (always in upper case)
+*    VIRT is a common prefix to group such  variables together (always in upper case)
 *  SECTION is the name of the [section] in virtuoso.ini (case insensitive)
 *   KEY is the name of a key within the section (case insensitive)
     VALUE is the text to be written into the key (case sensitive)
@@ -47,16 +47,16 @@ For sharing data and scripts between the host and the container create an `/impo
 ```
 DirsAllowed = ., ../vad, /usr/share/proj, /database/import
 ```
-To restart vistuoso container:
+To restart virtuoso container:
 ```
 docker restart  docker-virtuoso
 ```
 
 ## 2. Docker compose (simple case)
 
-The simple docker compose case is when you just need to respect a reproductibility data process. In that case you will "just" have to build an app composed by :
-* the official virtuoso image
-* the data process run via a new docker image that you will create by your own. This one will simply called a bash script operating the data process
+The simple docker-compose case is when you just need to respect a reproducible data process. In that case, you will "just" have to build an app composed by :
+* The official virtuoso image
+* The data process run via a new docker image that you will create on your own. This one will simply be called a bash script operating the data process
 
 We could find here a template of *docker-compose.yml* invested into the DBpedia project :
 
@@ -95,9 +95,9 @@ services:
       - store
 ```
 
-The first layer of the docker-compose file called *store* is just very similar to use case illustrated in the section 1.1. including all the parameters of the previous docker-run command.
+The first layer of the docker-compose file called *store* is similar to the use case illustrated in section 1.1. including all the parameters of the previous docker-run command.
 
-The second one is the new docker image that we will create. We are specifying into the build field where we can find the Dockerfile used for building the image. Notice here that we also list the environement variables leveraged intot the Unix environment of our docker app.
+The second one is the new docker image that we will create. We are specifying into the build field where we can find the Dockerfile used for building the image. Notice here that we also list the environment variables leveraged into the Unix environment of our docker app.
 
 Concerning the Dockerfile, please find here a template for building your own app :
 ```
@@ -122,7 +122,7 @@ We using here a very light Unix image that we extends by installing docker and a
 
 ## 3. Docker compose for extending the virtuoso image
 
-In some case you could be in the situation where you must have to extends the virtuoso image. The best way for it would be to create a docker-compose file (you may simply create a Docker file but creating a docker-compose one prevent to build and run the app) :
+In some cases, you could be in a situation where you must have to extend the virtuoso image. The best way for it would be to create a docker-compose file (you may simply create a Docker file but creating a docker-compose one prevents to build and run the app) :
 ```
 version: '3'
 services:
@@ -142,7 +142,7 @@ services:
     volumes:
       - ${VIRTUOSO_DATABASE_DIR}:/opt/virtuoso-opensource/database
 ```
-Comparing with the previous section exemple notice that we don't use directly use the virtuoso image. Because we will extend it by rewritting a Dockerfile. Let's see how to extend it via an exemple used by the DBpedia french chapter :
+Compared with the previous section example, notice that we don't use the virtuoso image. We extend it by rewriting a Dockerfile. Let's see how to extend it via an example used by the DBpedia french chapter :
 ```
 FROM openlink/virtuoso-opensource-7
 
@@ -152,4 +152,4 @@ RUN apt-get -y install git python
 RUN cd /opt && git clone https://github.com/datalogism/dbpedia-vad && cd dbpedia-vad && ./build.sh
 
 ```
-Firstly we upload the virtuoso image that we simply extends by installing an application coming from a github repo
+Firstly we upload the virtuoso image that we extend by installing an application coming from a GitHub repo
