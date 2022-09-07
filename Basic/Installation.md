@@ -36,6 +36,7 @@ As an example, an example with the database stored in the current folder:
 docker run  \
     --name docker-virtuoso \
     --detach \
+    --restart always \
     --env DBA_PASSWORD=$VIRTUOSO-DBA-PWD \
     --publish 1111:1111 \
     --publish 8890:8890 \
@@ -43,6 +44,8 @@ docker run  \
     openlink/virtuoso-opensource-7:latest
 ```
 For sharing data and scripts between the host and the container create an `/import` directory under the directory mapped to `/database` directory on the container. Add this directory to the allowed directories list in *virtuoso.ini file*.
+
+The option `--restart always` ensures that the Vrtuoso service restarts as the Docker deamon restarts.
 
 ```
 DirsAllowed = ., ../vad, /usr/share/proj, /database/import
