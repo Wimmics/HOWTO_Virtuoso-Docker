@@ -16,7 +16,6 @@ log_enable(3,1);
 
 SPARQL CLEAR GRAPH  <http://data.namespace.fr/graph/test>;
 
-DELETE FROM DB.DBA.load_list;
 ld_dir ('', 'test.ttl', 'http://data.namespace.fr/graph/test');
 rdf_loader_run ();
 
@@ -28,7 +27,7 @@ docker exec virtuoso \
        isql -H localhost -U dba -P $VIRTUOSO-DBA-PWD exec="LOAD import/import-rdf.isql"
 
 ```
-Note that the second parameter of *ld_dir* command can be a file mask to load multiple files into the same graph (see command documentation [here](https://docs.openlinksw.com/virtuoso/fn_ld_dir/) .
+Note that the second parameter of *ld_dir* command can be a file mask to load multiple files into the same graph (see command documentation [here](https://docs.openlinksw.com/virtuoso/fn_ld_dir/) . Also multiple *ld_dir* commands can be in the same script before *rdf_loader_run* call.
 
 For an incremental update to a graph remove `SPARQL CLEAR GRAPH...` line.  
 
@@ -41,7 +40,6 @@ log_enable(3,1);
 
 SPARQL CLEAR GRAPH  <$ARGV[$+ $I 1]>;
 
-DELETE FROM DB.DBA.load_list;
 ld_dir ('', '$ARGV[$I]', '$ARGV[$+ $I 1]');
 rdf_loader_run ();
 checkpoint;
@@ -52,44 +50,4 @@ docker exec virtuoso \
        isql -H localhost -U dba -P $VIRTUOSO-DBA-PWD exec="LOAD import/import-rdf.isql" \
             -i test.ttl http://data.namespace.fr/graph/test
 
-```
-
-___________________________________________________________
-
-
-## Uploading virtuoso data outside virtuoso
-
-Another option to consider can be scripting complex actions via bash files. For it, you need to install first the package *virtuoso-opensource*.
-
-:exclamation: The virtuoso-opensource library also installs a virtuoso service that will launch at every reboot a virtuoso app at port 1111. We generally use the same part in our Docker app. To avoid collision of service a good practice could be to disable directly this one :
-* Check your /etc/init.d directory and spot the name of the virtuoso service
-* And simply disable it via : ```systemctl disable virtuoso-opensource-VERSION_NUMBER```
-
-You are now able to interact with isql by using the following function  :
-```
-run_virtuoso_cmd () {
- VIRT_OUTPUT=`echo "$1" | "$bin" -H "$host" -S "$port" -U "$user" -P "$STORE_DBA_PASSWORD" 2>&1`
- VIRT_RETCODE=$?
- if [[ $VIRT_RETCODE -eq 0 ]]; then
-   echo "$VIRT_OUTPUT" | tail -n+5 | perl -pe 's|^SQL> ||g'
-   return 0
- else
-   echo -e "[ERROR] running the these commands in virtuoso:\n$1\nerror code: $VIRT_RETCODE\noutput:"
-   echo "$VIRT_OUTPUT"
-   let 'ret = VIRT_RETCODE + 128'
-   return $ret
- fi
-}
-```
-* By declaring first the following parameters :
-```
-host=localhost  
-port=1111 (default value)
-user=dba
-STORE_DBA_PASSWORD= *** (this is your own secret)
-```
-
-Example of use :
-```
-run_virtuoso_cmd "SPARQL SELECT ?s ?o ?p WHERE {?s ?o ?p} LIMIT 10;"
 ```
