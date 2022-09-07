@@ -5,7 +5,7 @@
 - [ ] SSL certificate (Celian)
 - [x] namespace in ns.inria.fr and redirection towards describe endpoint of a virtuoso server (Pierre)
 - [x] How to load your data (Nadia, Anna, Pierre)
-- [ ] How to run commands on your virtuoso docker (Nadia, Anna, Pierre)
+- [x] How to run commands on your virtuoso docker (Nadia, Anna, Pierre)
 - [x] Tips: (Anyone who has something)
 - [ ] Performance management (Celian learned some things)
 - [ ] How to create a dump (?)
