@@ -11,7 +11,7 @@
 - [ ] SSL certificate (Celian)
 - [ ] Performance management (Celian learned some things)
 - [ ] How to create a dump (Celian)
-- [ ] In installation, add how to change the default admin Virtuoso pwd (Anna)
+- [x] In installation, add how to change the default admin Virtuoso pwd (Anna)
 
 ### More specific tasks
 - [ ] Remove ISSA and DBpedia-specific things. In particular, in the docker compose installation part.
