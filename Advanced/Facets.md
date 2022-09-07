@@ -1,6 +1,6 @@
 # Installing the Faceted Browsing Service
 
-## 1. Install the package 
+## 1. Install the package
 You can consult the official documentation here : http://vos.openlinksw.com/owiki/wiki/VOS/VirtuosoFacetsWebService
 The Faceted Browsing service gives you access to a search engine interface. It can also be used for describing your resource.
 
@@ -15,5 +15,5 @@ The application needs to index your resources for activating the search engine. 
 
 Describing a resource via the facet app could be time-consuming. When we ask to describe ?s, the service will list every ongoing and outgoing property returning all the triples shaped as *<?s> <?p> <?o>* and as *<?o> <?p> <?s>*.
 
-A tips for speeding up it is to disabling change the describe behavior as follows with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3) ) :
+A tip for speeding up it is to change the describe behavior as follows with isql ([see this post](https://community.openlinksw.com/t/how-to-change-default-describe-mode-in-faceted-browser/1691/3)) :
 * `INSERT INTO DB.DBA.SYS_SPARQL_HOST VALUES ('*',null,null,null,'DEFINE sql:describe-mode \"CBD\"')`

@@ -13,12 +13,12 @@ SELECT * {
 ?s ?p ?o
 }
 ```
-will return results containing duplicate triples. Graphs are supposed to be sets of triples, as such, querying the graph resulting from the union of two graphs should not have duplicated values. Because Virtuoso considers triples as quads in its inner workings, it considers identical triples as different quads and duplicates them in the results.
+will return results containing duplicate triples. Graphs are supposed to be sets of triples, as such, querying the graph resulting from the union of two graphs should not have duplicated values. Because Virtuoso considers triples as quads in its inner workings, it considers identical triples from different graphs as different quads and duplicates them in the results.
 When possible, the `DISTINCT` keyword should be used to remove duplicate values in the results of a query.
 
 ## The "ResultSetMaxRows" parameter applies to inner queries
 
-The number of results to a query is limited by the configuration parameter "`ResultSetMaxRows`" of the virtuoso server.
+The configuration parameter "`ResultSetMaxRows`" of the virtuoso server limits the number of results to a query.
 It is important to note that this parameter also applies to inner queries.
 
 For example, in a server with 2000 triples and a "`ResultSetMaxRows`" set to 1000, the following query should count the number of triples:

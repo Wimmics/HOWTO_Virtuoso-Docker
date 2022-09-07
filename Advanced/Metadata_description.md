@@ -1,4 +1,4 @@
-### Metadata description
+# Metadata description
 
 A dataset can be described using the [VoID](https://www.w3.org/TR/void/), [DCAT](https://www.w3.org/TR/vocab-dcat-2/) and [SPARQL-SD](https://www.w3.org/TR/sparql11-service-description/) vocabularies, with other more general vocabularies as complements.
 * VoID is used to describe the dataset hosted by the server,
@@ -25,7 +25,7 @@ As a general rule, the metadata of the RDF server must at least answer the quest
     * How was the content of the data generated?
 
 
-#### Template
+## Template
 
 The metadata description of a dataset can be created by following this template:
 ```
@@ -93,17 +93,17 @@ The metadata description of a dataset can be created by following this template:
 ```
 The template comes from [this file on GitHub](https://github.com/Wimmics/dekalog/blob/master/template-description.ttl).
 
-#### Tool
+## Tool
 
 The WIMMICS team hosts a [website](https://wimmics.github.io/voidmatic/) to easily generate a basic description of a dataset without preliminary knowledge.
 
-#### Make the metadata description available
+## Make the metadata description available
 
 The description can be accessible in at least one of the three following manners :
 * In the dataset itself
 The description can be stored with the data in the server, possibly in its own graph. This is the advantage of facilitating the updates of the metadata.
 * Reachable at `/sparql` if no parameters are passed
-According to the SPARQL-SD recommendation, any SPARQL server must make a SPARQL-SD description available at the `/sparql`. To respect that, we use the dereferencing feature of Virtuoso to redirect the `/sparql` URL toward the description of the resource describing the service present in the dataset, when their are no parameters and the expected content is an RDF file. This is done by adding the following rules to the Apache configuration, after replacing `ENDPOINT-URI` by the right URI:
+According to the SPARQL-SD recommendation, any SPARQL server must make a SPARQL-SD description available at the `/sparql`. To respect that, we use the dereferencing feature of Virtuoso to redirect the `/sparql` URL toward the description of the resource describing the service present in the dataset, when there are no parameters and the expected content is an RDF file. This is done by adding the following rules to the Apache configuration, after replacing `ENDPOINT-URI` with the right URI:
 ```
      RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
      RewriteCond "%{QUERY_STRING}" "^$"
@@ -136,7 +136,7 @@ According to the SPARQL-SD recommendation, any SPARQL server must make a SPARQL-
      RewriteRule "^/sparql/?$" "/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<ENDPOINT-URI>&output=application/rdf\%2bxml" [R=303,L]
 ```
 * Reachable at `/.well-known/void`
-According to the VoID recommendation, the metadata description of a SPARQL server should preferably be accessible as a file at the `/.well-known/void` URL. To make it possible, we add the following rules to the Apache configuration, after replacing `DATASET-URI` by the right URI:
+According to the VoID recommendation, the metadata description of a SPARQL server should preferably be accessible as a file at the `/.well-known/void` URL. To make it possible, we add the following rules to the Apache configuration, after replacing `DATASET-URI` with the right URI:
 ```
      RewriteCond "%{REQUEST_METHOD}" "GET" [nocase]
      RewriteCond "%{QUERY_STRING}" "^$"
