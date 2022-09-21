@@ -4,7 +4,7 @@
 
 ## Run or Update your docker image 
 
-If you have your docker image is already running, you should delete it and run it again. 
+If your docker image is already running, you should delete it and run it again.  
  ```
  sudo docker run --name myvirtuoso -p 8890:8890 -it \
   -p 1111:1111 \
@@ -55,8 +55,71 @@ Copy HTTP configurations for HTTPS.
 
 ## Update Apache web server configuration
 
-virtuoso.conf
+```
+<VirtualHost *:443>
+     ServerName erebe-vm16.i3s.unice.fr
+     ServerAlias weakg.i3s.unice.fr
 
+    SSLEngine on
+    SSLCertificateFile      /etc/apache2/certificate/20220829_XXX_cert.cer
+    SSLCertificateKeyFile   /etc/apache2/certificate/XXXX.key
+    SSLCertificateChainFile /etc/apache2/certificate/XXXXX_CA.cer
+    
+    SSLProxyEngine on
+  
+
+    RewriteEngine on
+
+     #--- No access to the home page of Virtuoso, redirect to the sparql
+     #interface
+     #ProxyPassMatch ^/$ !
+     #RewriteRule "^/$" "http://%{SERVER_NAME}/sparql" [R=303,L]
+     Header set Access-Control-Allow-Origin "*"
+
+
+     #--- Proxy anything to Virtuoso port 8890
+     ProxyPass /sparql https://localhost:4443/sparql
+     ProxyPassReverse /sparql https://localhost:4443/sparql
+
+    ProxyPass /describe/ https://localhost:4443/describe/
+    ProxyPassReverse /describe/ https://localhost:4443/describe/
+
+    ProxyPass /statics/ https://localhost:4443/statics/
+    ProxyPassReverse /statics/ https://localhost:4443/statics/
+
+    ProxyPass /fct/ https://localhost:4443/fct/
+    ProxyPassReverse /fct/ https://localhost:4443/fct/
+
+    ProxyPass /services/ https://localhost:4443/services/
+    ProxyPassReverse /services/ https://localhost:4443/services/
+
+     #--- Forbid access to Conductor, only allowed through direct access
+     #to Virtuoso port 8890 or 4443 which is not open on internet
+     <Location /conductor>
+       Order deny,allow
+       Deny from all
+     </Location>
+</VirtualHost>
+```
+
+Restart your apache server and try it !! 
+
+You may get the following error 
+
+```
+Proxy Error
+The proxy server could not handle the request GET /web_app.
+Reason: Error during SSL Handshake with remote server
+```
+
+So you just need to add to your configuration file the following directives:
+
+``` 
+SSLProxyVerify none
+SSLProxyCheckPeerCN off
+SSLProxyCheckPeerName off
+SSLProxyCheckPeerExpire off
+```
 ## Create redirection rules for DESCRIBE
 
 
