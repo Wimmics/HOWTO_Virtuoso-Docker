@@ -21,10 +21,17 @@ X509ClientVerifyCAFile      = /database/XXXXX_CA.cer
 DynamicLocal = 1
 DefaultHost  = localhost:8890
 ```
+restart the Virtuoso image, and look at the log file. Once HTTPS is up, you should see something like:
+
+```
+HTTPS Using X509 Client CA ....
+HTTPS/X509 server online at 4443
+```
+
 
 ## Configure Virtuoso via Conductor
 
-Copy HTTP configirations for HTTPS. 
+Copy HTTP configurations for HTTPS. 
 
 ## Update Apache web server configuration
 
