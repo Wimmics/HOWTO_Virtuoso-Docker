@@ -4,15 +4,17 @@
 
 ## Run or Update your docker image 
 
-Make sure to have ## -p 4443:4443 option to activate HTTPS virtuoso
+Make sure to have ``` -p 4443:4443 ``` option in your commande to activate HTTPS virtuoso.
 
-sudo docker run --name myvirtuoso -p 8890:8890 -it \
+ ```
+ sudo docker run --name myvirtuoso -p 8890:8890 -it \
   -p 1111:1111 \
-## -p 4443:4443 \
+  -p 4443:4443 \
   -e DBA_PASSWORD=dba \
   -e SPARQL_UPDATE=true \
   -v ~/../virtuoso-openlink2:/database \
-  -d  openlink/virtuoso-opensource-7:latest
+  -d  openlink/virtuoso-opensource-7:latest ```
+
 
 ## Update the virtuoso.ini file
 
