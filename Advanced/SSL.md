@@ -4,7 +4,7 @@
 
 ## Run or Update your docker image 
 
-Make sure to have ``` -p 4443:4443 ``` option in your commande to activate HTTPS virtuoso.
+Make sure to have ``` -p 4443:4443 ``` option in your command to activate HTTPS virtuoso.
 
  ```
  sudo docker run --name myvirtuoso -p 8890:8890 -it \
@@ -13,12 +13,13 @@ Make sure to have ``` -p 4443:4443 ``` option in your commande to activate HTTPS
   -e DBA_PASSWORD=dba \
   -e SPARQL_UPDATE=true \
   -v ~/../virtuoso-openlink2:/database \
-  -d  openlink/virtuoso-opensource-7:latest ```
+  -d  openlink/virtuoso-opensource-7:latest
+ ```
 
 
 ## Update the virtuoso.ini file
 
-Copy the certificate files to the volume shared with Virtuoso Docker container and update the  [HTTPServer] section section in your```virtuoso.ini```.
+Copy the certificate files to the volume shared with Virtuoso Docker container and update the [HTTPServer] section in your```virtuoso.ini```.
 
 ```
 SSLCertificate              = /database/20220829_XXX_cert.cer
@@ -33,6 +34,7 @@ Also update/check the [URIQA] section:
 DynamicLocal = 1
 DefaultHost  = localhost:8890
 ```
+
 Restart the Virtuoso image, and look at the log file. Once HTTPS is up, you should see something like:
 
 ```
