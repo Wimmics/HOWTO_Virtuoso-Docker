@@ -77,7 +77,7 @@ Copy HTTP configurations for HTTPS.
      Header set Access-Control-Allow-Origin "*"
 
 
-     #--- Proxy anything to Virtuoso port 8890
+     #--- Proxy anything to Virtuoso port 4443
      ProxyPass /sparql https://localhost:4443/sparql
      ProxyPassReverse /sparql https://localhost:4443/sparql
 
