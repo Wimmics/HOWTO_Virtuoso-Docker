@@ -8,10 +8,11 @@
 - [x] Tips: (Anyone who has something)
 - [x] Add example of proper metadata description or template (Pierre)
 - [x] Redirection of the .well-known (Pierre)
-- [ ] SSL certificate (Celian)
+- [ ] SSL certificate (Everyone, Nadia started)
 - [ ] Performance management (Celian learned some things)
 - [ ] How to create a dump (Celian)
 - [x] In installation, add how to change the default admin Virtuoso pwd (Anna)
+- [ ] Review by someone not from our group
 
 ### More specific tasks
 - [ ] Remove ISSA and DBpedia-specific things. In particular, in the docker compose installation part.
