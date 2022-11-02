@@ -9,8 +9,8 @@
 - [x] Add example of proper metadata description or template (Pierre)
 - [x] Redirection of the .well-known (Pierre)
 - [ ] SSL certificate (Everyone, Nadia started)
-- [ ] Performance management (Celian learned some things)
-- [ ] How to create a dump (Celian)
+- [x] Performance management (Celian learned some things)
+- [x] How to create a dump (Celian)
 - [x] In installation, add how to change the default admin Virtuoso pwd (Anna)
 - [ ] Review by someone not from our group
 - [ ] "How to have 2 endpoints on the same server" in Advanced (Nadia/Frank)
