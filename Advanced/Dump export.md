@@ -1,4 +1,4 @@
-# Dump export
+# Dump export as RDF
 
 If you want to export your data into a RDF dump (turtle format), it exists a way to doing it by declaring specifics store procedures.
 
