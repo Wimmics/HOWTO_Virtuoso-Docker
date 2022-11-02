@@ -15,3 +15,4 @@
 - [Making HTTPS work, with SSL](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/SSL.md)
 - [Metadata description](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Metadata_description.md#metadata-description)
 - [Tips and Tricks](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/TipsTricks.md)
+- [Export RDF dump](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Dump%20export.md)
