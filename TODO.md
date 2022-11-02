@@ -13,7 +13,6 @@
 - [x] How to create a dump (Celian)
 - [x] In installation, add how to change the default admin Virtuoso pwd (Anna)
 - [ ] Review by someone not from our group
-- [ ] "How to have 2 endpoints on the same server" in Advanced (Nadia/Frank)
 
 ### More specific tasks
 - [ ] Remove ISSA and DBpedia-specific things. In particular, in the docker compose installation part.
