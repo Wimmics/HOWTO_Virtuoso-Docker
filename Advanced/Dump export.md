@@ -1,19 +1,16 @@
 # Dump export
 
-When you enrich your knowledge base directly from Update SPARQL queries or just by computing and saving statistics on it,
-It must be interresting for you to export a dump file directly from your virtuoso database.
+If you want to export your data into a RDF dump (turtle format), it exists a way to doing it by declaring specifics store procedures.
 
-For example the French DBpedia chapter is based on the dump hosted on the Databus but a lot of refiments are made on the database, 
+For example the French DBpedia chapter is based on the dump hosted on the Databus but a lot of refinments are made on the database, 
 all that works are after it recorded into a turtle file.
 
-1. Declaration of the procedure
+1. Declaration of the store procedures
 
-You first need to declare a new database procedure into your conductor.
-Several procedures are already given into the virtuoso documentation :  
-https://docs.openlinksw.com/virtuoso/rdfperfdumpandreloadgraphs/ 
+* You first need to declare a new database procedure into your Isql interface, several procedures are already given into the virtuoso documentation : https://docs.openlinksw.com/virtuoso/rdfperfdumpandreloadgraphs/ 
 
 
-We slightly simply the namedgraph export in the use case of the french DBpedia for being able to save it into a single file :  
+* We simplify the named graph export in the use case of the french DBpedia for being able to save it into a single file :  
 https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart/blob/master/dbpedia-loader/virtuoso_proc/create_dump
 
 
