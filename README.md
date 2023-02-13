@@ -2,7 +2,7 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-The goal of this project is to centralize the technical knowledge obtained on the hosting of an Openlink Virtuoso server, using a docker image. The information given comes from the experience of five different projects of the WIMMICS team. Each project had a different use case. This project aims to cover the functionalities that were common to most of the five projects, for future reference.
+The goal of this repository is to centralize the technical knowledge obtained on the hosting of an Openlink Virtuoso server, using a docker image. The information given comes from the experience of five different projects of the WIMMICS team. Each project had a different use case. This repository aims to cover the functionalities that were common to most of the five projects, for future reference.
 
 ## Basic
 
