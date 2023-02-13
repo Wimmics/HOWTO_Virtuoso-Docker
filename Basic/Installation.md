@@ -2,7 +2,7 @@
 
 Depending on your use case different possibilities are offered to you :
 * You just need to host a server > go to section 1.1.
-* You had to respect the reproducibility rules of a complete data process that only need to load your data > go to section 1.2.
+* You had to respect the reproducibility rules of a complete data process that only needs to load your data > go to section 1.2.
 * You are in the case where you need to extend the virtuoso application with another one > go to section 1.3.
 
 #### Virtuoso env variables
