@@ -1,7 +1,7 @@
 # Virtuoso on docker installation
 
 Depending on your use case different possibilities are offered to you :
-* You just need to host a server > go to section 1.1.
+* You just need to host a server > go to [section 1.1](./#section1).
 * You had to respect the reproducibility rules of a complete data process that only needs to load your data > go to section 1.2.
 * You are in the case where you need to extend the virtuoso application with another one > go to section 1.3.
 
@@ -17,7 +17,7 @@ From the docker image documentation, the naming convention are the followings :
 *   KEY is the name of a key within the section (case insensitive)
     VALUE is the text to be written into the key (case sensitive)
 
-## 1. Simple Docker image installation
+## 1. [Simple Docker image installation](#section1)
 
 To load Openlink virtuoso image:
 ```
