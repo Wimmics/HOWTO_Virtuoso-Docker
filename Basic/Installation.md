@@ -3,7 +3,7 @@
 Depending on your use case different possibilities are offered to you :
 * You just need to host a server > go to [section 1.1](#1-simple-docker-image-installation).
 * You had to respect the reproducibility rules of a complete data process that only needs to load your data > go to [section 1.2](#2-docker-compose-simple-case).
-* You are in the case where you need to extend the virtuoso application with another one > go to section [1.3](#3-docker-compose-for-extending-the-virtuoso-image).
+* You are in the case where you need to extend the virtuoso application with another one > go to [section 1.3](#3-docker-compose-for-extending-the-virtuoso-image).
 
 
 #### Virtuoso env variables
