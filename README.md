@@ -7,7 +7,7 @@ These guidelines stem from the experience gained by [Inria](https://www.inria.fr
 
 Salient elements are: Docker-based deployment, setup of an Apache web server front-end, HTTPS configuration, RDF bulk loading, providing rich metadata and making it available via .well-known or endpoint URL dereferencing. 
 
-This is certainely not perfect, feed-back is obviously welcome!
+This is continuously improved, feed-back is most welcome!
 
 
 ## Basic
