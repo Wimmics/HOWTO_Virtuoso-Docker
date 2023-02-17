@@ -27,3 +27,11 @@ This is continuously improved, feed-back is most welcome!
 - [Tips and Tricks](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/TipsTricks.md)
 - [Export RDF dump](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/Dump%20export.md)
 - [Add custom prefixes to query GUI](https://github.com/Wimmics/HOWTO_Virtuoso-Docker/blob/main/Advanced/AddCustomNsPrefix.md)
+
+## Motivating projects
+
+- [Covid-on-the-Web Dataset](https://github.com/Wimmics/CovidOnTheWeb/)
+- [French DBpedia Chapter](https://github.com/Wimmics/dbpedia-virtuoso-sparql-endpoint-quickstart)
+- [WeatherKG meteorological measurements dataset](https://github.com/Wimmics/weather-kg/tree/main/meteo)
+- [ISSA scientific publications dataset](https://github.com/issa-project)
+- [Wasabi song and music dataset](https://github.com/micbuffa/WasabiDataset)
