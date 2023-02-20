@@ -35,3 +35,4 @@ This is continuously improved, feed-back is most welcome!
 - [WeatherKG meteorological measurements dataset](https://github.com/Wimmics/weather-kg/tree/main/meteo)
 - [ISSA scientific publications dataset](https://github.com/issa-project)
 - [Wasabi song and music dataset](https://github.com/micbuffa/WasabiDataset)
+- [IndeGx: Framework for an index of SPARQL endpoints](https://github.com/Wimmics/dekalog)
