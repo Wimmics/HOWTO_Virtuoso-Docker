@@ -7,9 +7,8 @@ Using a file manager, you then can upload a `.htaccess` file as follows (replace
 ```
 RewriteEngine On
 
-# ---- Rule for prod-dekalog.inria.fr
 RewriteCond "%{HTTP_ACCEPT}" "text/html" [nocase]
-RewriteRule "^(.*)$" "[SERVER_NAME]?url=[NAMESPACE]$1" [R=303,L]
+RewriteRule "^(.*)$" "[SERVER_NAME]/describe/?url=[NAMESPACE]$1" [R=303,L]
 
 RewriteCond "%{HTTP_ACCEPT}" "text/turtle" [nocase]
 RewriteRule "^#(.*)$" "[SERVER_NAME]/sparql?query=define+sql:describe-mode+'CBD'+DESCRIBE+<[NAMESPACE]$1>&output=text/turtle" [R=303,L]
