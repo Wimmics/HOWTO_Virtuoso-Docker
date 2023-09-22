@@ -31,7 +31,7 @@ SELECT (COUNT(*) AS ?count) {
 ```
 Because of the limit set by "`ResultSetMaxRows`", the query will return 1000 instead of 2000.
 
-## Beware of the ordering of property path
+## Beware of the ordering of property paths
 
 For reasons unknown, the ordering of property paths in a basic graph pattern may change the number of results returned by a query.
 
