@@ -35,7 +35,7 @@ Because of the limit set by "`ResultSetMaxRows`", the query will return 1000 ins
 
 For reasons unknown, the ordering of property paths in a basic graph pattern may change the number of results returned by a query.
 
-For example, the following query sent to :
+For example, the following query sent to [https://data-issa.cirad.fr/sparql](https://data-issa.cirad.fr/sparql):
 ```sparql
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX prov:   <http://www.w3.org/ns/prov#>
