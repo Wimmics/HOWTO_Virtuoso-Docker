@@ -30,3 +30,41 @@ SELECT (COUNT(*) AS ?count) {
 }
 ```
 Because of the limit set by "`ResultSetMaxRows`", the query will return 1000 instead of 2000.
+
+## Beware of the ordering of property path
+
+For reasons unknown, the ordering of property paths in a basic graph pattern may change the number of results returned by a query.
+
+For example, the following query sent to :
+```sparql
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX prov:   <http://www.w3.org/ns/prov#>
+PREFIX oa:     <http://www.w3.org/ns/oa#>
+
+SELECT discint ?document
+FROM <http://data-issa.cirad.fr/graph/documents>
+FROM <http://data-issa.cirad.fr/graph/thematic-descriptors>
+FROM <http://data-issa.cirad.fr/graph/annif-descriptors>
+FROM <http://agrovoc.fao.org/graph>
+WHERE {
+    ?document a prov:Entity.
+
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_1666> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_29172> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_34024> ].
+}
+```
+returns 1 result.
+The same query with:
+```sparql
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_29172> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_34024> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_1666> ].
+```
+returns 7 results and with:
+```sparql
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_34024> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_29172> ].
+    ?document ^oa:hasTarget [ oa:hasBody/skos:broader* <http://aims.fao.org/aos/agrovoc/c_1666> ].
+```
+it returns 6 results
