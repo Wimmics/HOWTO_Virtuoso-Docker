@@ -28,7 +28,7 @@ for a specific version:
 ```
 docker pull openlink/virtuoso-opensource-7:7.2
 ```
-Before running the container for the first time it is necessary to create a dba password and store it in the $VIRTUOSO-DBA-PWD env variable. (We choose to set the variable in the user's .bashrc file. If you do the same remember to restart the user's session.)
+Before running the container for the first time it is necessary to create a dba password and store it in the $VIRTUOSO_DBA_PWD env variable. (We choose to set the variable in the user's .bashrc file. If you do the same remember to restart the user's session.)
 
 The Openlink virtuoso image offers a mounting point `/database/` where the folder containing the database files and the `.ini` file can be mounted to make the data and configuration persistent.
 
@@ -38,7 +38,7 @@ docker run  \
     --name docker-virtuoso \
     --detach \
     --restart always \
-    --env DBA_PASSWORD=$VIRTUOSO-DBA-PWD \
+    --env DBA_PASSWORD=$VIRTUOSO_DBA_PWD \
     --publish 1111:1111 \
     --publish 8890:8890 \
     --volume `pwd`:/database \
