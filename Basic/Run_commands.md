@@ -7,7 +7,7 @@ isql needs to connect to the server as an admin.
 As an example, the following line displays the status of the virtuoso server:
 ```
 sudo docker exec -it virtuoso \
-    isql -H localhost -S 1111 -U dba -P $VIRTUOSO-DBA-PWD exec="status();"
+    isql -H localhost -S 1111 -U dba -P $VIRTUOSO_DBA_PWD exec="status();"
 ```
 
 ## Some useful commands
@@ -15,16 +15,16 @@ sudo docker exec -it virtuoso \
 Run a SPARQL query in the command line:
 ```
 sudo docker exec -it virtuoso \
-    isql -H localhost -S 1111 -U dba -P $VIRTUOSO-DBA-PWD exec="SPARQL SELECT * { ?s ?p ?o };"
+    isql -H localhost -S 1111 -U dba -P $VIRTUOSO_DBA_PWD exec="SPARQL SELECT * { ?s ?p ?o };"
 ```
 
 Run isql instructions in a `command.isql` file present in the shared folder `/database`:
 ```
-docker exec -it virtuoso \
-    isql localhost:1111 dba $VIRTUOSO-DBA-PWD database/command.isql
+sudo docker exec -it virtuoso \
+    isql localhost:1111 dba $VIRTUOSO_DBA_PWD database/command.isql
 ```
 or
 ```
-docker exec -it virtuoso \
-    isql localhost:1111 dba $VIRTUOSO-DBA-PWD exec="LOAD database/command.isql"
+sudo docker exec -it virtuoso \
+    isql localhost:1111 dba $VIRTUOSO_DBA_PWD exec="LOAD database/command.isql"
 ```

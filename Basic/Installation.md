@@ -22,20 +22,20 @@ From the docker image documentation, the naming convention are the followings :
 
 To load Openlink virtuoso image:
 ```
-docker pull openlink/virtuoso-opensource-7:latest
+sudo docker pull openlink/virtuoso-opensource-7:latest
 ```
 for a specific version:
 ```
-docker pull openlink/virtuoso-opensource-7:7.2
+sudo docker pull openlink/virtuoso-opensource-7:7.2
 ```
 Before running the container for the first time it is necessary to create a dba password and store it in the $VIRTUOSO_DBA_PWD env variable. (We choose to set the variable in the user's .bashrc file. If you do the same remember to restart the user's session.)
 
 The Openlink virtuoso image offers a mounting point `/database/` where the folder containing the database files and the `.ini` file can be mounted to make the data and configuration persistent.
 
-As an example, an example with the database stored in the current folder:
+Here is an example with the database stored in the current folder:
 ```
-docker run  \
-    --name docker-virtuoso \
+sudo docker run  \
+    --name virtuoso \
     --detach \
     --restart always \
     --env DBA_PASSWORD=$VIRTUOSO_DBA_PWD \
@@ -44,16 +44,18 @@ docker run  \
     --volume `pwd`:/database \
     openlink/virtuoso-opensource-7:latest
 ```
-For sharing data and scripts between the host and the container create an `/import` directory under the directory mapped to `/database` directory on the container. Add this directory to the allowed directories list in *virtuoso.ini file*.
-
 The option `--restart always` ensures that the Vrtuoso service restarts as the Docker deamon restarts.
+
+
+To share data and scripts between the host and the container, create an `/import` directory under the directory mapped to `/database` directory on the container. Add this directory to the allowed directories list in *virtuoso.ini file*:
 
 ```
 DirsAllowed = ., ../vad, /usr/share/proj, /database/import
 ```
-To restart virtuoso container:
+
+To restart Virtuoso:
 ```
-docker restart  docker-virtuoso
+sudo docker restart virtuoso
 ```
 
 ## 2. Docker compose (simple case)
